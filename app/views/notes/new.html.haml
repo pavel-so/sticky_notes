@@ -1,0 +1,7 @@
+-form_for @note,:remote=>true do |f|
+  %p
+    =f.text_area 'message',:rows=>15,:cols=>40
+  %p
+    =f.submit 'Add'
+    =link_to 'Cancel','#',:class=>'cancel'
+

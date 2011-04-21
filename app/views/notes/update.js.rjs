@@ -1,0 +1,5 @@
+nid="#{@note.id}"
+page.replace_html "#{nid}-message", @note.message
+page[".edit_note"].remove
+page["#mask"].hide
+

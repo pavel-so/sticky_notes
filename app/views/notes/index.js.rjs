@@ -1,0 +1,20 @@
+@notes.each do |note|
+  nid="#{note.id}"
+  page.insert_html :bottom,
+                   'container',
+                   "<div id='#{nid}' class='note'>
+                      <div class='cross'>
+                         #{link_to_function '/',
+                              "editNote('"+nid+"')",:alt=>'Edit Note'
+                         }
+                         #{link_to_function 'x',
+                              "if (confirm('Delete Really?')) deleteNote('"+nid+"')",:alt=>'Delete Note'
+                         }
+
+                      </div>
+                      <div class='date'>#{note.created_at.strftime('%d/%m/%Y - %H:%M')}</div>
+                      <div id='#{nid}-message' class='content'>#{note.message}</div>
+                    </div>"
+end
+page[".note"].draggable({:stack=>'.note'})
+

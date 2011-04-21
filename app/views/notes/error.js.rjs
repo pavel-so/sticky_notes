@@ -1,0 +1,6 @@
+error_list=''
+@note.errors.each do |f,msg|
+  error_list+="#{h(f)}: #{msg}\n"
+end
+page.alert(error_list)
+

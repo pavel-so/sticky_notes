@@ -1,0 +1,19 @@
+nid="#{@note.id}"
+page.insert_html :bottom,
+                 'container',
+                 "<div id='#{nid}' class='note'>
+                      <div class='cross'>
+                         #{link_to_function '/',
+                              "editNote('"+nid+"')"
+                         }
+                         #{link_to_function 'x',
+                              "if (confirm('Really?')) deleteNote('"+nid+"')"
+                         }
+                      </div>
+                      <div class='date'>#{@note.created_at.strftime('%d/%m/%Y - %H:%M')}</div>
+                      <div id='#{nid}-message' class='content'>#{@note.message}</div>
+                    </div>"
+page["##{nid}"].draggable({:stack=>'.note'})
+page["#new_note"].remove
+page["#mask"].hide
+
